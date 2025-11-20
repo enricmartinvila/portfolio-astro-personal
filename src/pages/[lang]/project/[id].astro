@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import { languages } from "../../../i18n/ui";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  
+  return Object.keys(languages).flatMap((lang) => 
+    projects.map((project) => ({
+      params: { lang, id: project.slug },
+      props: { project },
+    }))
+  );
+}
+
+const { project } = Astro.props;
+const { lang } = Astro.params;
+---
+
+<Layout lang={lang} title={project.data.title} description={project.data.description}>
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-4">{project.data.title}</h1>
+    <p class="text-lg mb-6">{project.data.description}</p>
+    <div class="prose prose-lg">
+      <!-- {Astro.markdown(project.body)} -->
+    </div>
+  </main>
+</Layout>

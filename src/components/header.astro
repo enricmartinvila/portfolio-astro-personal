@@ -1,0 +1,23 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<header class="w-full py-4 border-b border-slate-200 dark:border-slate-700">
+  <div class="max-w-5xl mx-auto px-4 flex items-center justify-between gap-4">
+    <a href={`/${lang}`} class="font-semibold text-2xl">
+      {t('header.title')}
+    </a>
+
+    <div class="flex items-center gap-3">
+      {/* Selector de idioma estilo rápido */}
+      <nav class="flex items-center gap-2 text-sm">
+        <a href="/es" class={lang === "es" ? "underline font-medium" : "hover:underline"}>ES</a>
+        <a href="/en" class={lang === "en" ? "underline font-medium" : "hover:underline"}>EN</a>
+        <a href="/ca" class={lang === "ca" ? "underline font-medium" : "hover:underline"}>CAT</a>
+      </nav>
+    </div>
+  </div>
+</header>

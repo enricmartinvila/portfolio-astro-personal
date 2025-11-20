@@ -1,0 +1,19 @@
+---
+import About from '../../components/about.astro';
+import Welcome from '../../components/Welcome.astro';
+import Layout from '../../layouts/Layout.astro';
+import Projects from '../../components/projects.astro';
+import { languages } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout lang={lang}>
+	<Welcome lang={lang} />
+	<Projects lang={lang} />
+	<About lang={lang} />
+</Layout>

@@ -1,0 +1,86 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { useTranslations } from '../i18n/utils';
+
+type ProjectEntry = CollectionEntry<"projects">;
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const projects = await getCollection("projects");
+
+// Dividir en filas de 2 proyectos
+const rows: ProjectEntry[][] = [];
+for (let i = 0; i < projects.length; i += 2) {
+	rows.push(projects.slice(i, i + 2));
+}
+---
+
+<div class="flex flex-col gap-10">
+	 <h2 class="text-4xl md:text-7xl font-bold relative inline-block">
+        {t('projects.title')}
+        <span class="absolute -bottom-2 left-0 w-1/5 h-2 bg-[#585919]"></span>
+      </h2>
+  {
+    rows.map((row) => (
+      <div class="flex flex-col sm:flex-row gap-10 group/row">
+        {
+			row.map((p) => (
+				<div
+				class="group/card relative h-[500px] rounded-xl overflow-hidden shadow-lg w-full sm:flex-1
+				transition-all duration-500 ease-in-out
+				sm:group-hover/row:flex-[0.9]
+				sm:hover:flex-[1.1] sm:hover:z-10 hover:cursor-pointer"
+				>
+				<a href={`/${lang}/project/${p.slug}`}>
+              <img
+			  	loading="lazy"
+				  src={p.data.img}
+				  alt={p.data.title}
+				  class="absolute inset-0 w-full h-full object-cover"
+				  />
+
+              <div class="absolute top-0 left-0 w-full bg-linear-to-b from-black/60 to-transparent py-3 text-center">
+                <h3 class="text-white text-3xl font-semibold drop-shadow">
+                  {p.data.title}
+                </h3>
+              </div>
+
+             <div class="absolute bottom-0 left-0 w-full bg-linear-to-t from-black/60 to-transparent pb-2 pt-8">
+							<div class="flex justify-between items-end px-4 pb-4">
+								<div class="text-white">
+									<button class="text-sm pointer-events-none bg-[#585919] px-1 rounded-xs">
+										{p.data.stack}
+									</button>
+									<p class="mt-2">{p.data.description}</p>
+								</div>
+
+								<button
+									class="flex items-center gap-2 cursor-pointer text-white px-4 py-2 rounded hover:bg-[#585919]/60 transition-colors"
+									>
+									<span
+										class="cursor-pointer
+										opacity-0 translate-y-1
+										transition-all duration-300 delay-500
+										group-hover/card:opacity-100 group-hover/card:translate-y-0
+										whitespace-nowrap text-lg font-semibold
+										"
+										>
+										{t('projects.discover')} {p.data.title}
+									</span>
+
+									<svg xmlns="http://www.w3.org/2000/svg" class="size-7" viewBox="0 0 16 9">
+										<path fill="currentColor" d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5"/>
+										<path fill="currentColor" d="M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71s.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z"/>
+									</svg>
+								</button>
+							</div>
+						</div>
+				</a>
+            </div>
+          ))
+        }
+      </div>
+    ))
+  }
+</div>

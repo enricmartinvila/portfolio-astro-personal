@@ -1,0 +1,58 @@
+export const languages = {
+  en: 'English',
+  es: 'Español',
+  ca: 'Català',
+};
+
+export const defaultLang = 'en';
+
+export const ui = {
+  en: {
+    'header.title': 'My Portfolio',
+    'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.projects': 'Projects',
+    'hero.role': 'Frontend Developer',
+    'hero.alt': 'Profile photo',
+    'about.title': 'About Me',
+    'about.p1': "I am a junior programmer with experience in various technologies and programming languages, such as <span class='text-[#585919] font-bold'>JavaScript, Express, and SQL</span>. I enjoy teamwork and am always looking for ways to improve and learn. I adapt quickly to new environments and am willing to grow alongside my teammates.",
+    'about.p2': "Furthermore, I am a self-taught person and have no trouble acquiring new skills and technologies if necessary. I strive to stay up-to-date with trends and developments in the tech field, and I greatly enjoy programming and problem-solving in my free time.",
+    'about.years': 'Years Experience',
+    'about.projects': 'Projects Completed',
+    'about.location': 'Barcelona, Spain',
+    'projects.title': 'Projects',
+    'projects.discover': 'Discover',
+  },
+  es: {
+    'header.title': 'Mi Portafolio',
+    'nav.home': 'Inicio',
+    'nav.about': 'Sobre mí',
+    'nav.projects': 'Proyectos',
+    'hero.role': 'Desarrollador Frontend',
+    'hero.alt': 'Foto de perfil',
+    'about.title': 'Sobre Mí',
+    'about.p1': "Soy un programador junior con experiencia en diferentes tecnologías y lenguajes de programación, como <span class='text-[#585919] font-bold'>JavaScript, Express y SQL</span>. Disfruto del trabajo en equipo y siempre estoy buscando formas de mejorar y aprender. Me adapto rápidamente a nuevos entornos y estoy dispuesto a crecer junto a mis compañeros de equipo.",
+    'about.p2': "Además, soy una persona autodidacta y no tengo problemas en adquirir nuevas habilidades y tecnologías si es necesario. Procuro estar siempre al día en cuanto a tendencias y desarrollos en el ámbito tech y disfruto mucho de la programación y la resolución de problemas en mi tiempo libre.",
+    'about.years': 'Años de Experiencia',
+    'about.projects': 'Proyectos Completados',
+    'about.location': 'Barcelona, España',
+    'projects.title': 'Proyectos',
+    'projects.discover': 'Descubre',
+  },
+  ca: {
+    'header.title': 'El meu Portafoli',
+    'nav.home': 'Inici',
+    'nav.about': 'Sobre mi',
+    'nav.projects': 'Projectes',
+    'hero.role': 'Desenvolupador Frontend',
+    'hero.alt': 'Foto de perfil',
+    'about.title': 'Sobre Mi',
+    'about.p1': "Sóc un programador júnior amb experiència en diferents tecnologies i llenguatges de programació, com <span class='text-[#585919] font-bold'>JavaScript, Express i SQL</span>. Gaudeixo del treball en equip i sempre estic buscant maneres de millorar i aprendre. M'adapto ràpidament a nous entorns i estic disposat a créixer al costat dels meus companys d'equip.",
+    'about.p2': "A més, sóc una persona autodidacta i no tinc problemes en adquirir noves habilitats i tecnologies si és necessari. Procuro estar sempre al dia pel que fa a tendències i desenvolupaments en l'àmbit tech i gaudeixo molt de la programació i la resolució de problemes en el meu temps lliure.",
+    'about.years': 'Anys d\'Experiència',
+    'about.projects': 'Projectes Completats',
+    'about.location': 'Barcelona, Catalunya',
+    'projects.title': 'Projectes',
+    'projects.discover': 'Descobreix',
+  },
+} as const;
