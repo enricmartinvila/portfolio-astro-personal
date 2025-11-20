@@ -59,6 +59,9 @@ const t = useTranslations(lang);
 	}, 300);
 
 	window.addEventListener("scroll", () => {
+		// Disable on mobile
+		if (window.matchMedia("(max-width: 768px)").matches) return;
+
 		const pfp = document.getElementById("pfp");
 		const triggerPoint = 50; // scroll en px para empezar a ocultar
 		if (pfp == null) return;
