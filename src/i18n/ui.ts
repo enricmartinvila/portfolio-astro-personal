@@ -22,6 +22,8 @@ export const ui = {
     'about.location': 'Barcelona, Spain',
     'projects.title': 'Projects',
     'projects.discover': 'Discover',
+    'footer.contact': 'Contact Me',
+    'footer.rights': 'All rights reserved.',
   },
   es: {
     'header.title': 'Mi Portafolio',
@@ -38,6 +40,8 @@ export const ui = {
     'about.location': 'Barcelona, España',
     'projects.title': 'Proyectos',
     'projects.discover': 'Descubre',
+    'footer.contact': 'Contáctame',
+    'footer.rights': 'Todos los derechos reservados.',
   },
   ca: {
     'header.title': 'El meu Portafoli',
@@ -54,5 +58,7 @@ export const ui = {
     'about.location': 'Barcelona, Catalunya',
     'projects.title': 'Projectes',
     'projects.discover': 'Descobreix',
+    'footer.contact': 'Contacta\'m',
+    'footer.rights': 'Tots els drets reservats.',
   },
 } as const;
