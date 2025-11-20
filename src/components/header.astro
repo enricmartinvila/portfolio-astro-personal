@@ -3,21 +3,60 @@ import { useTranslations } from '../i18n/utils';
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const navItems = [
+  { label: t('nav.projects'), href: `#projects` },
+  { label: t('nav.about'), href: `#about` },
+];
 ---
 
-<header class="w-full py-4 border-b border-slate-200 dark:border-slate-700">
-  <div class="max-w-5xl mx-auto px-4 flex items-center justify-between gap-4">
-    <a href={`/${lang}`} class="font-semibold text-2xl">
-      {t('header.title')}
+<header class="fixed top-0 left-0 w-full z-50 flex justify-center py-6 px-4 pointer-events-none">
+  <nav class="pointer-events-auto flex items-center gap-2 p-2 rounded-full border border-white/10 bg-[#121212]/50 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-[#121212]/70">
+    
+    <!-- Logo / Home -->
+    <a href={`/${lang}`} class="px-4 py-2 rounded-full hover:bg-white/5 text-white transition-colors font-bold text-sm md:text-base tracking-tight">
+       {t('nav.home')}
     </a>
 
-    <div class="flex items-center gap-3">
-      {/* Selector de idioma estilo rápido */}
-      <nav class="flex items-center gap-2 text-sm">
-        <a href="/es" class={lang === "es" ? "underline font-medium" : "hover:underline"}>ES</a>
-        <a href="/en" class={lang === "en" ? "underline font-medium" : "hover:underline"}>EN</a>
-        <a href="/ca" class={lang === "ca" ? "underline font-medium" : "hover:underline"}>CAT</a>
-      </nav>
+    <!-- Divider -->
+    <div class="w-px h-5 bg-white/10 mx-1 hidden sm:block"></div>
+
+    <!-- Nav Links -->
+    <div class="hidden sm:flex items-center gap-1">
+      {navItems.map(item => (
+        <a href={item.href} class="px-4 py-2 rounded-full hover:bg-white/5 transition-colors text-sm text-gray-300 hover:text-white">
+          {item.label}
+        </a>
+      ))}
     </div>
-  </div>
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-white/10 mx-1"></div>
+
+    <!-- Language Selector -->
+    <div class="flex items-center gap-1">
+        <a href="/es" class={`text-xs font-bold px-3 py-1.5 rounded-full transition-all ${lang === 'es' ? 'bg-white/15 text-white shadow-sm' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>ES</a>
+        <a href="/en" class={`text-xs font-bold px-3 py-1.5 rounded-full transition-all ${lang === 'en' ? 'bg-white/15 text-white shadow-sm' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>EN</a>
+        <a href="/ca" class={`text-xs font-bold px-3 py-1.5 rounded-full transition-all ${lang === 'ca' ? 'bg-white/15 text-white shadow-sm' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>CA</a>
+    </div>
+
+  </nav>
 </header>
+
+<style>
+  /* Optional: Add a subtle animation for the header appearance */
+  header {
+    animation: slideDown 0.5s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
