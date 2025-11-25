@@ -7,7 +7,7 @@ const t = useTranslations(lang);
 
 <div
 	id="container"
-	class="min-h-[100dvh] flex flex-col justify-center pl-0 md:pl-4 space-y-6"
+	class="min-h-dvh flex flex-col justify-center pl-0 md:pl-4 space-y-6"
 >
 	<h1 class="text-5xl md:text-7xl font-bold text-left flex gap-2">
 		<span id="typed-name"></span><span id="cursor">|</span>
@@ -21,10 +21,11 @@ const t = useTranslations(lang);
 	</button> -->
 	<img
 		id="pfp"
-		src="/fotos/pfp2.png"
+		src={lang === 'ca' ? '/fotos/pfptongue.jpg' : '/fotos/pfp2.png'}
 		alt={t('hero.alt')}
 		class="pfp-img"
 	/>
+	
 </div>
 
 <script>
