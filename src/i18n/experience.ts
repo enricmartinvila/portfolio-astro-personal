@@ -2,7 +2,7 @@ export const experience = {
   en: [
     {
       company: "Mercura",
-      role: "Web Developer",
+      role: "Frontend Developer",
       date: "October 2023 – <strong>Present</strong> - Remote",
       description:
         "I work as a web developer, participating in the design and development of digital solutions, as well as in the implementation of new functionalities and the continuous improvement of the company's projects.",
