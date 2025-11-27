@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import { languages } from "../../../i18n/ui";
+import { useTranslations } from "../../../i18n/utils";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -16,14 +17,79 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { lang } = Astro.params;
+const t = useTranslations(lang as any);
+const { Content } = await project.render();
 ---
 
-<Layout lang={lang} title={project.data.title} description={project.data.description}>
-  <main class="max-w-3xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-4">{project.data.title}</h1>
-    <p class="text-lg mb-6">{project.data.description}</p>
-    <div class="prose prose-lg">
-      <!-- {Astro.markdown(project.body)} -->
+<Layout lang={lang} title={project.data.title} description={t(project.data.description as any)}>
+  <main class="max-w-5xl mx-auto px-4 py-12 md:py-16">
+    <!-- Hero Image -->
+    <div class="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-xl overflow-hidden shadow-2xl mb-12">
+      <img
+        src={project.data.img}
+        alt={project.data.title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/30"></div>
+    </div>
+
+    <!-- Title with accent underline -->
+    <div class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-bold relative inline-block mb-6">
+        {project.data.title}
+        <span class="absolute -bottom-2 left-0 w-1/4 h-2 bg-[#585919]"></span>
+      </h1>
+      
+      <!-- Tech Stack Badge -->
+      <div class="mt-6">
+        <span class="inline-block bg-[#585919] text-white px-4 py-2 rounded-md text-sm font-semibold">
+          {project.data.stack}
+        </span>
+      </div>
+    </div>
+
+    <!-- Subtitle -->
+    {project.data.subtitle && (
+      <p class="text-xl md:text-2xl text-gray-500 mb-8 italic">
+        {project.data.subtitle}
+      </p>
+    )}
+
+    <!-- Description -->
+    <div class="prose prose-lg max-w-none text-gray-400 leading-relaxed text-lg md:text-xl mb-12">
+      <p>{t(project.data.description as any)}</p>
+    </div>
+
+    <!-- Link to project if available -->
+    {project.data.link && (
+      <div class="flex justify-center mt-12">
+        <a
+          href={project.data.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-[#585919] hover:bg-[#6a6b20] text-white px-8 py-4 rounded-md transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105"
+        >
+          <span>{t('projects.discover')} {project.data.title}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 16 9">
+            <path fill="currentColor" d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5"/>
+            <path fill="currentColor" d="M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71s.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z"/>
+          </svg>
+        </a>
+      </div>
+    )}
+
+    <!-- Back to projects link -->
+    <div class="mt-16 text-center">
+      <a
+        href={`/${lang}/#projects`}
+        class="inline-flex items-center gap-2 text-gray-400 hover:text-[#585919] transition-colors duration-300 text-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 rotate-180" viewBox="0 0 16 9">
+          <path fill="currentColor" d="M12.5 5h-9c-.28 0-.5-.22-.5-.5s.22-.5.5-.5h9c.28 0 .5.22.5.5s-.22.5-.5.5"/>
+          <path fill="currentColor" d="M10 8.5a.47.47 0 0 1-.35-.15c-.2-.2-.2-.51 0-.71l3.15-3.15l-3.15-3.15c-.2-.2-.2-.51 0-.71s.51-.2.71 0l3.5 3.5c.2.2.2.51 0 .71l-3.5 3.5c-.1.1-.23.15-.35.15Z"/>
+        </svg>
+        <span>{t('nav.projects')}</span>
+      </a>
     </div>
   </main>
 </Layout>

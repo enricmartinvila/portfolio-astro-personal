@@ -1,7 +1,8 @@
 ---
 title: "In progress"
 stack: "Astro"
-description: "Web Page for ?"
+subtitle: "Web Page for ?"
+description: "project.wip.description"
 link: "https://acdc.com/"
 img: "/fotos/wip.webp"
 ---

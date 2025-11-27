@@ -1,7 +1,8 @@
 ---
     title: "QEHome"
     stack: "React"
-    description: "Basic Web page for an apartment"
+    subtitle: "Basic Web page for an apartment"
+    description: "project.qehome.description"
     link: "https://qehomemanresa.com/"
     img: "./fotos/qehome.webp"
 ---

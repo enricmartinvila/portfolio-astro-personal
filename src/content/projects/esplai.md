@@ -1,7 +1,8 @@
 ---
     title: "Esplai Can Cristu"
     stack: "React"
-    description: "Web Page for Esplai Can Cristu"
+    subtitle: "Web Page for Esplai Can Cristu"
+    description: "project.esplai.description"
     link: "https://esplai-can-cristu.com/"
     img: "/fotos/esplai.webp"
 ---

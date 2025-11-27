@@ -52,18 +52,18 @@ for (let i = 0; i < projects.length; i += 2) {
 									<button class="text-sm pointer-events-none bg-[#585919] px-1 rounded-xs">
 										{p.data.stack}
 									</button>
-									<p class="mt-2">{p.data.description}</p>
+									<p class="mt-2">{p.data.subtitle || ''}</p>
 								</div>
 
 								<button
-									class="flex items-center gap-2 cursor-pointer text-white px-4 py-2 rounded hover:bg-[#585919]/60 transition-colors"
+									class="flex items-center gap-2 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-[#585919]/60 transition-colors"
 									>
 									<span
 										class="cursor-pointer
 										opacity-0 translate-y-1
 										transition-all duration-300 delay-500
 										group-hover/card:opacity-100 group-hover/card:translate-y-0
-										whitespace-nowrap text-lg font-semibold
+										whitespace-nowrap text-md font-semibold
 										"
 										>
 										{t('projects.discover')} {p.data.title}
