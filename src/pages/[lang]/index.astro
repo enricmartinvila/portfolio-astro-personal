@@ -3,6 +3,7 @@ import About from '../../components/about.astro';
 import Welcome from '../../components/Welcome.astro';
 import Layout from '../../layouts/Layout.astro';
 import Projects from '../../components/projects.astro';
+import Experience from '../../components/experience.astro';
 import { languages } from '../../i18n/ui';
 
 export function getStaticPaths() {
@@ -15,5 +16,6 @@ const { lang } = Astro.params;
 <Layout lang={lang}>
 	<Welcome lang={lang} />
 	<Projects lang={lang} />
+	<Experience lang={lang} />
 	<About lang={lang} />
 </Layout>

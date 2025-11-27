@@ -1,0 +1,44 @@
+---
+import { experience } from '../i18n/experience';
+import { useTranslations } from '../i18n/utils';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const currentExperience = experience[lang as keyof typeof experience] || experience.es;
+
+---
+
+<section id="experience" class="py-12 md:py-20 relative">
+  <div class="space-y-12">
+    <h2 class="text-4xl md:text-7xl font-bold relative inline-block">
+      {t('experience.title')}
+      <span class="absolute -bottom-2 left-0 w-1/3 h-2 bg-[#585919]"></span>
+    </h2>
+
+    <div class="relative border-l border-white/20 ml-4 md:ml-6 space-y-12">
+      {currentExperience.map((job) => (
+        <div class="relative pl-8 md:pl-12 group">
+          {/* Dot on timeline */}
+          <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#585919] ring-4 ring-[#9c9c9c] group-hover:scale-125 transition-transform duration-300"></div>
+          
+          <div class="space-y-2">
+            <h3 class="text-2xl md:text-3xl font-bold">
+              <span class="inline-block px-4 py-1 -ml-4 rounded-full text-[#52532A]/70 group-hover:text-[#52532A] transition-colors duration-300">
+                {job.company}
+              </span>
+            </h3>
+            <div class="flex flex-col md:flex-row md:items-center gap-1 md:gap-4 text-gray-400">
+              <span class="text-lg font-semibold text-[#585919]">{job.role}</span>
+              <span class="hidden md:inline">•</span>
+              <span class="text-sm md:text-base italic" set:html={job.date}></span>
+            </div>
+            <p class="text-gray-200 group-hover:text-gray-400 transition-colors duration-300 leading-relaxed max-w-3xl pt-2 text-lg">
+              {job.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
