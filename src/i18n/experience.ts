@@ -3,7 +3,7 @@ export const experience = {
     {
       company: "Mercura",
       role: "Web Developer",
-      date: "October 2023 – <strong>Present</strong>",
+      date: "October 2023 – <strong>Present</strong> - Remote",
       description:
         "I work as a web developer, participating in the design and development of digital solutions, as well as in the implementation of new functionalities and the continuous improvement of the company's projects.",
     },
@@ -26,7 +26,7 @@ export const experience = {
     {
       company: "Mercura",
       role: "Desarrollador Web",
-      date: "Octubre 2023 – Actualidad",
+      date: "Octubre 2023 – Actualidad - Remoto",
       description:
         "Trabajo como desarrollador web, participando en el diseño y desarrollo de soluciones digitales, así como en la implementación de nuevas funcionalidades y la mejora continua de los proyectos de la empresa.",
     },
@@ -49,7 +49,7 @@ export const experience = {
     {
       company: "Mercura",
       role: "Desenvolupador Web",
-      date: "Octubre 2023 – Actualitat",
+      date: "Octubre 2023 – Actualitat - Remot",
       description:
         "Treballo com a desenvolupador web, participant en el disseny i desenvolupament de solucions digitals, així com en la implementació de noves funcionalitats i la millora contínua dels projectes de l'empresa.",
     },
